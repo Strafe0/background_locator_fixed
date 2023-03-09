@@ -196,6 +196,7 @@ class IsolateHolderService : MethodChannel.MethodCallHandler, LocationUpdateList
         wakeLockTime = intent.getIntExtra(Keys.SETTINGS_ANDROID_WAKE_LOCK_TIME, 60) * 60 * 1000L
 
         locatorClient = context?.let { getLocationClient(it) }
+        startForeground(notificationId, getNotification())
         locatorClient?.requestLocationUpdates(getLocationRequest(intent))
 
         // Fill pluggable list
